@@ -36,7 +36,7 @@ public class Java_projet extends Application {
         
         Scene scene = new Scene(root, 300, 250);
         
-        primaryStage.setTitle("Hello Worldmen2!");
+        primaryStage.setTitle("Hellozeldnzedz Worldmen2!");
         primaryStage.setScene(scene);
         primaryStage.show();
     }
