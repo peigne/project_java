@@ -1,4 +1,4 @@
-package fr.enac.sita.visuradar.model;
+package View;
 
 import java.util.List;
 
