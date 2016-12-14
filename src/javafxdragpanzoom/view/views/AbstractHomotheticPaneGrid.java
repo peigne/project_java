@@ -47,18 +47,14 @@ public abstract class AbstractHomotheticPaneGrid extends AbstractHomotheticPane 
             ChangeListener the_listener = new ChangeListener<Double>(){
                 @Override
                 public void changed(ObservableValue<? extends Double> observable, Double first_width, Double second_width) {
-                        line_V.setStrokeWidth((1/getScale()));
+                        line_V.setStrokeWidth(1/getScale());
                         line_H.setStrokeWidth(1/getScale());
-                        
                 }
-            };
-            scaleProperty().addListener(the_listener);
-          
 
-            
+            };
+        scaleProperty().addListener(the_listener);
         }
         super.getChildren().add(grid);
-
  
             
 // ...

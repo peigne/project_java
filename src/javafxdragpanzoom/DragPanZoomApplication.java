@@ -33,12 +33,12 @@ public class DragPanZoomApplication extends Application {
 
         // Conteneur sur lequel on veut faire du pan & zoom
         AbstractHomotheticPane panAndZoomPane = new HomotheticPaneGridStandard();
-        panAndZoomPane.setLayoutX(10);
-        panAndZoomPane.setLayoutY(10);
+        panAndZoomPane.setLayoutX(0);
+        panAndZoomPane.setLayoutY(0);
         root.getChildren().add(panAndZoomPane);
         
         // Noeud sur lequel on veut faire du drag
-        AbstractHomotheticPaneRectangle rect1 = new HomotheticPaneRectangleStandard();
+        AbstractHomotheticPaneRectangle rect1 = new HomotheticPaneRectangleStandard(panAndZoomPane);
         rect1.setLayoutX(450);
         rect1.setLayoutY(450);
         panAndZoomPane.getChildren().add(rect1);
@@ -57,20 +57,23 @@ public class DragPanZoomApplication extends Application {
         
 
             @Override
-            public void handle(ScrollEvent event) {
-                if (event.getDeltaY()>0)
+            public void handle(ScrollEvent event)
+            {
+                    if (event.getDeltaY()>0)
                 {   
                     panAndZoomPane.setScale(panAndZoomPane.getScale()*1.1,
-                    panAndZoomPane.parentToLocal(event.getX(),event.getY()).getX(),
-                    panAndZoomPane.parentToLocal(event.getX(),event.getY()).getY());
+                            panAndZoomPane.parentToLocal(event.getX(),event.getY()).getX(),
+                            panAndZoomPane.parentToLocal(event.getX(),event.getY()).getY());
+
                 }
                 else 
                 {
-                    panAndZoomPane.setScale(panAndZoomPane.getScale()*0.909090909,
-                    panAndZoomPane.parentToLocal(event.getX(),event.getY()).getX(),
-                    panAndZoomPane.parentToLocal(event.getX(),event.getY()).getY());
-                }
-            
+                            panAndZoomPane.setScale(panAndZoomPane.getScale()*(1/1.1),
+                            panAndZoomPane.parentToLocal(event.getX(),event.getY()).getX(),
+                            panAndZoomPane.parentToLocal(event.getX(),event.getY()).getY());
+                    
+                }    
+
             }
         });
         

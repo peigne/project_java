@@ -4,6 +4,8 @@ import javafx.beans.value.ObservableValue;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.StrokeType;
+import javafx.scene.transform.Affine;
+
 
 /**
  * Classe abstraite décrivant un Pane contenant un rectangle et dont la mise à l'échelle est toujours homothétique 
@@ -14,11 +16,12 @@ public abstract class AbstractHomotheticPaneRectangle extends AbstractHomothetic
     /**
      * Initialiser le composant et créer le rectangle 
      * (ce constructeur de classe abstraite sera appelé depuis le constructeur de ses réalisations)
+     * @param pane
      */
-    public AbstractHomotheticPaneRectangle() {
+    public AbstractHomotheticPaneRectangle(AbstractHomotheticPane pane) {
         // Créer le rectangle
         // Option 1 : origine en haut à gauche
-        super.getChildren();
+        
         Rectangle rect = new Rectangle(100, 100);
         rect.setStroke(Color.BLUE);
         rect.setStrokeType(StrokeType.INSIDE);
@@ -27,12 +30,18 @@ public abstract class AbstractHomotheticPaneRectangle extends AbstractHomothetic
             
                 @Override
                 public void changed(ObservableValue<? extends Double> observable, Double high, Double second_high) {
-                        System.out.println("zoom_en_marche_bleu");
+                        System.out.println("zoom_en_marche_bleuX"+pane.getScale());
+                        setScale(pane.getScale(),rect.getLayoutX(),rect.getLayoutY());
+                        
                         
                         
                 }
             };
-            scaleProperty().addListener(the_second_listener);
+            
+            //Affine affine = new Affine( pane.getTransforms().get(0));
+            //affine.mxxProperty().addListener(the_second_listener);
+            //pane.scaleProperty().addListener(the_second_listener);
+            
             super.getChildren().add(rect);
             
             

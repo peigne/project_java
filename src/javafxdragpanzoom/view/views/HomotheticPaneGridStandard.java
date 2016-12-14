@@ -12,7 +12,8 @@ import javafx.scene.transform.Affine;
  */
 public class HomotheticPaneGridStandard extends AbstractHomotheticPaneGrid {
 
-    private Affine transfo;
+   private  Affine transfo;
+
 
     public HomotheticPaneGridStandard() {
         super();
@@ -35,29 +36,15 @@ public class HomotheticPaneGridStandard extends AbstractHomotheticPaneGrid {
         point2D.setLocation(localToScreen(pivotX,pivotY).getX(),localToScreen(pivotX,pivotY).getY());
         scaleProperty().setValue(scale);        
         translate(point2D.getX()-localToScreen(pivotX,pivotY).getX(),point2D.getY()-localToScreen(pivotX,pivotY).getY());*/
-        transfo.appendScale(scale, scale, pivotX, pivotY);
+        transfo.appendScale(scale, scale,pivotX,pivotY);
         System.err.println((transfo));
 
     }
 
     @Override
-    public void addScale(double deltaScale, double pivotX, double pivotY) {
+    public void addScale(double deltaScale, double pivotX, double pivotY) {}
     
-        if (deltaScale>0)
-                {   
-                    scaleProperty().setValue(getScale()*1.1);
-                    System.err.println("scale"+getScale());
-                    this.setScale(getScale(),pivotX,pivotY);
-
-                }
-                else 
-                {
-                    scaleProperty().setValue(scaleProperty().getValue()*(1/1.1));
-                    System.err.println("scale"+scaleProperty().getValue());
-                    this.setScale(this.getScale(),pivotX,pivotY);
-                    
-                }    }
-
+        
     @Override
     public void translate(double dx, double dy) {
         /*Affine transfo_translate= new Affine();

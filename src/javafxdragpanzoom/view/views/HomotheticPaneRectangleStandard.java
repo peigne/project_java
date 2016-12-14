@@ -7,7 +7,6 @@ package javafxdragpanzoom.view.views;
 
 import javafx.scene.transform.Affine;
 import javafx.scene.transform.Transform;
-import static javafx.scene.transform.Transform.affine;
 
 
 /**
@@ -39,11 +38,10 @@ public class HomotheticPaneRectangleStandard extends AbstractHomotheticPaneRecta
 
     @Override
     public void setScale(double scale, double pivotX, double pivotY) {
-        System.out.println("zoom_affine");
         Affine transfo= new Affine();
         transfo.appendScale(1/scale, 1/scale, pivotX, pivotY);
         this.getTransforms().set(0,transfo);
-        System.err.println("this"+this.getTransforms()+"TT");
+        //System.err.println("this"+this.getTransforms()+"TT");
        
         
    }
@@ -57,6 +55,9 @@ public class HomotheticPaneRectangleStandard extends AbstractHomotheticPaneRecta
     public void translate(double dx, double dy) {
         this.setLayoutX(this.getLayoutX()+dx);
         this.setLayoutY(this.getLayoutY()+dy);
+        /*Affine transfo_translate= new Affine();
+        transfo_translate.appendTranslation(this.getLayoutX()+dx, this.getLayoutY()+dy);
+        this.getTransforms().set(0, transfo_translate);*/
    }
     
 }

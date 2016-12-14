@@ -30,7 +30,6 @@ private double x0;
         {
             x0=event.getX();
             y0=event.getY();
-            System.out.println("grid"+x0+"y0"+y0);
             event.consume();
             
         }
