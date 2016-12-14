@@ -14,6 +14,7 @@ import javafx.scene.transform.Transform;
  * @author darwich
  */
 public class HomotheticPaneRectangleStandard extends AbstractHomotheticPaneRectangle {
+    private Affine transformation_1;
     
     public HomotheticPaneRectangleStandard (AbstractHomotheticPane pane) {
         super(pane);
@@ -23,10 +24,8 @@ public class HomotheticPaneRectangleStandard extends AbstractHomotheticPaneRecta
         // et au modèle issus d'AbstractHomotheticPane.
         // Toutes les transformations se feront ensuite directement sur le modèle 
         // via les méthodes setScale(...) réalisées dans cette classe.
-        scaleXProperty().bind(scaleProperty());
-        scaleYProperty().bind(scaleProperty());
-        Affine transfo= new Affine();
-        this.getTransforms().add(transfo);
+        transformation_1= new Affine();
+        this.getTransforms().add(transformation_1);
         
         
     }
@@ -38,10 +37,8 @@ public class HomotheticPaneRectangleStandard extends AbstractHomotheticPaneRecta
 
     @Override
     public void setScale(double scale, double pivotX, double pivotY) {
-        Affine transfo= new Affine();
-        transfo.appendScale(1/scale, 1/scale, pivotX, pivotY);
-        this.getTransforms().set(0,transfo);
-        //System.err.println("this"+this.getTransforms()+"TT");
+        transformation_1.setToTransform(1/scale,0,pivotX,0, 1/scale,pivotY);
+        System.err.println(transformation_1);
        
         
    }
@@ -55,9 +52,8 @@ public class HomotheticPaneRectangleStandard extends AbstractHomotheticPaneRecta
     public void translate(double dx, double dy) {
         this.setLayoutX(this.getLayoutX()+dx);
         this.setLayoutY(this.getLayoutY()+dy);
-        /*Affine transfo_translate= new Affine();
-        transfo_translate.appendTranslation(this.getLayoutX()+dx, this.getLayoutY()+dy);
-        this.getTransforms().set(0, transfo_translate);*/
+        //transformation_1.appendTranslation(this.getLayoutX()+dx, this.getLayoutY()+dy);
+        System.err.println("ca marche pas");
    }
     
 }
