@@ -17,8 +17,8 @@ public class HomotheticPaneGridStandard extends AbstractHomotheticPaneGrid {
 
     public HomotheticPaneGridStandard() {
         super();
-        scaleXProperty().bind(scaleProperty());
-        scaleYProperty().bind(scaleProperty());
+        //scaleXProperty().bind(scaleProperty());
+        //scaleYProperty().bind(scaleProperty());
         transfo = new Affine();
         this.getTransforms().add(transfo);
 
@@ -37,22 +37,20 @@ public class HomotheticPaneGridStandard extends AbstractHomotheticPaneGrid {
         scaleProperty().setValue(scale);        
         translate(point2D.getX()-localToScreen(pivotX,pivotY).getX(),point2D.getY()-localToScreen(pivotX,pivotY).getY());*/
         transfo.appendScale(scale, scale,pivotX,pivotY);
-        System.err.println((transfo));
+        scaleProperty().setValue(getScale()*scale);
 
     }
 
     @Override
-    public void addScale(double deltaScale, double pivotX, double pivotY) {}
+    public void addScale(double deltaScale, double pivotX, double pivotY) {
+            throw new UnsupportedOperationException("Not supported yet.");
+}
     
         
     @Override
     public void translate(double dx, double dy) {
-        /*Affine transfo_translate= new Affine();
-        transfo_translate.appendTranslation(this.getLayoutX()+dx, this.getLayoutY()+dy);
-        this.getTransforms().set(0, transfo_translate);
-        System.err.println("ok---");*/
-        this.setLayoutX(this.getLayoutX() + dx);
-        this.setLayoutY(this.getLayoutY() + dy);
+        transfo.appendTranslation(this.getLayoutX()+dx, this.getLayoutY()+dy);
+
     }
 
 }

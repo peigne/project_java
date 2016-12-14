@@ -30,7 +30,6 @@ public abstract class AbstractHomotheticPaneRectangle extends AbstractHomothetic
             
                 @Override
                 public void changed(ObservableValue<? extends Double> observable, Double high, Double second_high) {
-                        System.out.println("zoom_en_marche_bleuX"+pane.getScale());
                         setScale(pane.getScale(),rect.getLayoutX(),rect.getLayoutY());
                         
                         
@@ -38,9 +37,7 @@ public abstract class AbstractHomotheticPaneRectangle extends AbstractHomothetic
                 }
             };
             
-            //Affine affine = new Affine( pane.getTransforms().get(0));
-            //affine.mxxProperty().addListener(the_second_listener);
-            //pane.scaleProperty().addListener(the_second_listener);
+            pane.scaleProperty().addListener(the_second_listener);
             
             super.getChildren().add(rect);
             

@@ -38,8 +38,8 @@ private double x0;
         {
             double dx=event.getX()-x0;
             double dy=event.getY()-y0;
-            event.consume();
             rectangle.translate(dx, dy);
+            event.consume();
 
         }
         

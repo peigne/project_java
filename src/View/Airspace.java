@@ -9,7 +9,7 @@ import java.util.Map;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Airspace {
+/*public class Airspace {
     private HashMap<String,ISector> espaceS;
     private HashMap<String,IBeacon> espaceB;
     
@@ -49,4 +49,4 @@ public class Airspace {
         }
         return publishedB;
     }
-}
+}*/

@@ -61,17 +61,18 @@ public class DragPanZoomApplication extends Application {
             {
                     if (event.getDeltaY()>0)
                 {   
-                    panAndZoomPane.setScale(panAndZoomPane.getScale()*1.1,
+                    panAndZoomPane.setScale(1.1,
                             panAndZoomPane.parentToLocal(event.getX(),event.getY()).getX(),
                             panAndZoomPane.parentToLocal(event.getX(),event.getY()).getY());
-
+                            System.err.println("scale"+panAndZoomPane.getScale());
                 }
                 else 
                 {
-                            panAndZoomPane.setScale(panAndZoomPane.getScale()*(1/1.1),
+                            panAndZoomPane.setScale(1/1.1,
                             panAndZoomPane.parentToLocal(event.getX(),event.getY()).getX(),
                             panAndZoomPane.parentToLocal(event.getX(),event.getY()).getY());
-                    
+                            System.err.println("scale"+panAndZoomPane.getScale());
+
                 }    
 
             }
