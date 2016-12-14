@@ -20,7 +20,7 @@ public class Airspace {
     
     public Airspace(ICartographyManager cartographyManager) {
         List<IBeacon> l_Beacon=cartographyManager.loadBeacons();
-        List<IBeacon> l_Sectors=cartographyManager.loadSectors();
+        List<ISector> l_Sectors=cartographyManager.loadSectors();
         espaceB=new HashMap<String,IBeacon>();
         espaceS=new HashMap<String,ISector>();
     }
@@ -38,5 +38,15 @@ public class Airspace {
     
     public Map<String,IBeacon> getBeaconByNameMap() {
         return espaceB;
+    }
+    
+    public List<IBeacon> getPublishedBeacons() {
+        List<IBeacon> publishedB=new ArrayList<IBeacon>();
+        for (Map.Entry<String,IBeacon> l_B : espaceB.entrySet()) {
+            if (l_B.getValue().getType()=="published") {
+                publishedB.add(l_B.getValue());
+            }
+        }
+        return publishedB;
     }
 }
