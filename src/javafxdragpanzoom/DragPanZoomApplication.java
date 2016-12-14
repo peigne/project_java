@@ -59,21 +59,9 @@ public class DragPanZoomApplication extends Application {
             @Override
             public void handle(ScrollEvent event)
             {
-                    if (event.getDeltaY()>0)
-                {   
-                    panAndZoomPane.setScale(1.1,
-                            panAndZoomPane.parentToLocal(event.getX(),event.getY()).getX(),
-                            panAndZoomPane.parentToLocal(event.getX(),event.getY()).getY());
-                            System.err.println("scale"+panAndZoomPane.getScale());
-                }
-                else 
-                {
-                            panAndZoomPane.setScale(1/1.1,
-                            panAndZoomPane.parentToLocal(event.getX(),event.getY()).getX(),
-                            panAndZoomPane.parentToLocal(event.getX(),event.getY()).getY());
-                            System.err.println("scale"+panAndZoomPane.getScale());
-
-                }    
+                panAndZoomPane.addScale(event.getDeltaY(),
+                panAndZoomPane.parentToLocal(event.getX(),event.getY()).getX(),
+                panAndZoomPane.parentToLocal(event.getX(),event.getY()).getY());
 
             }
         });
@@ -104,14 +92,10 @@ public class DragPanZoomApplication extends Application {
                         dy = 0;
                         break;
                     case P:                  
-                    panAndZoomPane.setScale(panAndZoomPane.getScale()*1.1,
-                    rect1.getLayoutX()+50,rect1.getLayoutY()+50);
-                    rect1.setScale(rect1.getScale()*1.1);
+                    panAndZoomPane.addScale(1,rect1.getLayoutX()+50,rect1.getLayoutY()+50);
                     break;
                     case M:                        
-
-                    panAndZoomPane.setScale(panAndZoomPane.getScale()*0.909090909,
-                    rect1.getLayoutX()+50,rect1.getLayoutY()+50);
+                    panAndZoomPane.addScale(-1,rect1.getLayoutX()+50,rect1.getLayoutY()+50);
                     break;
                              
                     default:

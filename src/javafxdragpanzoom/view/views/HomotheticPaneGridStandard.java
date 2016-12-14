@@ -43,8 +43,16 @@ public class HomotheticPaneGridStandard extends AbstractHomotheticPaneGrid {
 
     @Override
     public void addScale(double deltaScale, double pivotX, double pivotY) {
-            throw new UnsupportedOperationException("Not supported yet.");
-}
+    if (deltaScale>0)
+                {   
+                    setScale(1.1,pivotX,pivotY);
+                }
+                else 
+                {
+                    setScale(1/1.1,pivotX,pivotY);
+
+                }    
+    }
     
         
     @Override

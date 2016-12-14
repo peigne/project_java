@@ -53,7 +53,6 @@ public class HomotheticPaneRectangleStandard extends AbstractHomotheticPaneRecta
         this.setLayoutX(this.getLayoutX()+dx);
         this.setLayoutY(this.getLayoutY()+dy);
         //transformation_1.appendTranslation(this.getLayoutX()+dx, this.getLayoutY()+dy);
-        System.err.println("ca marche pas");
    }
     
 }
