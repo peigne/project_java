@@ -1,4 +1,4 @@
-package View;
+package View.Interfaces;
 
 import java.util.List;
 

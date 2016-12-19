@@ -1,4 +1,4 @@
-package View;
+package View.Interfaces;
 
 import java.util.List;
 
@@ -8,7 +8,7 @@ public interface ICartographyManager {
 	 * Charger les balises
 	 * @return liste des balises publiées, avec les coordonnées au format cautra
 	 */
-	//public List<IBeacon> loadBeacons();
+	public List<IBeacon> loadBeacons();
 	
 	/**
 	 * Charger les secteurs
@@ -20,6 +20,6 @@ public interface ICartographyManager {
 	 * Charger le fond de carte
 	 * @return Une instance d'un objet implémentant IBaseMap, décrivant le fond de carte au format cautra
 	 */
-	//public IBaseMap loadBaseMap();
+	public IBaseMap loadBaseMap();
 
 }
