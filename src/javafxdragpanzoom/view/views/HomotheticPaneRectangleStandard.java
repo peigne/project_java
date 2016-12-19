@@ -37,7 +37,6 @@ public class HomotheticPaneRectangleStandard extends AbstractHomotheticPaneRecta
     @Override
     public void setScale(double scale, double pivotX, double pivotY) {
         transformation_1.setToTransform(1/scale,0,pivotX,0, 1/scale,pivotY);
-        System.err.println(transformation_1);
        
         
    }
@@ -49,9 +48,9 @@ public class HomotheticPaneRectangleStandard extends AbstractHomotheticPaneRecta
 
     @Override
     public void translate(double dx, double dy) {
-        //this.setLayoutX(this.getLayoutX()+dx);
-        //this.setLayoutY(this.getLayoutY()+dy);
-        transformation_1.appendTranslation(this.getLayoutX()+dx, this.getLayoutY()+dy);
+        this.setLayoutX(this.getLayoutX()+dx);
+        this.setLayoutY(this.getLayoutY()+dy);
+        //transformation_1.appendTranslation(this.getLayoutX()+dx, this.getLayoutY()+dy);
    }
     
 }
