@@ -2,13 +2,8 @@ package javafxdragpanzoom;
 
 import javafx.application.Application;
 import static javafx.application.Application.launch;
-import javafx.event.EventHandler;
-import javafx.geometry.Point2D;
 import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.input.RotateEvent;
-import javafx.scene.input.ScrollEvent;
 import javafx.stage.Stage;
 import javafxdragpanzoom.view.views.AbstractHomotheticPane;
 import javafxdragpanzoom.view.views.AbstractHomotheticPaneRectangle;
@@ -16,6 +11,8 @@ import javafxdragpanzoom.view.views.HomotheticPaneGridStandard;
 import javafxdragpanzoom.view.views.HomotheticPaneRectangleStandard;
 import javafxdragpanzoom.view.controls.HomotheticPanePanManager;
 import javafxdragpanzoom.view.controls.HomotheticPaneDragManager;
+import javafxdragpanzoom.view.controls.KeyControl;
+import javafxdragpanzoom.view.controls.ScrollEvent;
 /**
  * TP POO IENAC minSITA : Manipulation directe, zoom centré souris différencié
  * @author saporito
@@ -28,83 +25,42 @@ public class DragPanZoomApplication extends Application {
 
     @Override
     public void start(Stage stage) {
+        
         // Racine du graphe de scène
         Group root = new Group();
 
-        // Conteneur sur lequel on veut faire du pan & zoom
-        AbstractHomotheticPane panAndZoomPane = new HomotheticPaneGridStandard();
-        panAndZoomPane.setLayoutX(0);
-        panAndZoomPane.setLayoutY(0);
-        root.getChildren().add(panAndZoomPane);
+        // Conteneur grid
+        AbstractHomotheticPane grid = new HomotheticPaneGridStandard();//faut voir si on met pan ou pangrid
+        grid.setLayoutX(0);
+        grid.setLayoutY(0);
+        root.getChildren().add(grid);
         
-        // Noeud sur lequel on veut faire du drag
-        AbstractHomotheticPaneRectangle rect1 = new HomotheticPaneRectangleStandard(panAndZoomPane);
-        rect1.setLayoutX(450);
-        rect1.setLayoutY(450);
-        panAndZoomPane.getChildren().add(rect1);
+        // Conteneur rectangle bleu
+        AbstractHomotheticPaneRectangle rectangle = new HomotheticPaneRectangleStandard(grid);
+        rectangle.setLayoutX(450);
+        rectangle.setLayoutY(450);
+        grid.getChildren().add(rectangle);
         
-
-        //le deplacement
-        HomotheticPanePanManager panManager=new HomotheticPanePanManager(panAndZoomPane);
-        HomotheticPaneDragManager panDrag = new HomotheticPaneDragManager(rect1);
         // Creation de la scène
         Scene scene = new Scene(root, 500, 500);
         stage.setScene(scene);
-        stage.setTitle("DragPanZoomDiffInv v2 inv");
+        stage.setTitle("Image Radar");
+       
+        //les reactions au touches du clavier
+        KeyControl key=new KeyControl(scene,grid,rectangle);
+        
+        //les reactions du scroll
+        ScrollEvent zoom= new ScrollEvent(scene, grid);
+        
+        //les deplacements
+        HomotheticPanePanManager panManager=new HomotheticPanePanManager(grid);
+        HomotheticPaneDragManager panDrag = new HomotheticPaneDragManager(rectangle);
+        
+        // affichage final
         stage.show();
         
-        scene.setOnScroll(new EventHandler<ScrollEvent>(){
+       
         
-
-            @Override
-            public void handle(ScrollEvent event)
-            {
-                panAndZoomPane.addScale(event.getDeltaY(),
-                panAndZoomPane.parentToLocal(event.getX(),event.getY()).getX(),
-                panAndZoomPane.parentToLocal(event.getX(),event.getY()).getY());
-
-            }
-        });
         
-        // Déplacer le noeud avec les touches de direction
-        scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent event) {
-                int offset = 50;
-                int dx = 0;
-                int dy = 0;
-                switch (event.getCode()) {
-                    case UP:
-                        dx = 0;
-                        dy = - offset;
-                        break;
-                        
-                    case DOWN:
-                        dx = 0;
-                        dy = offset;
-                        break;
-                    case LEFT:
-                        dx = - offset;
-                        dy = 0;
-                        break;
-                    case RIGHT:
-                        dx = offset;
-                        dy = 0;
-                        break;
-                    case P:                  
-                    panAndZoomPane.addScale(1,rect1.getLayoutX()+50,rect1.getLayoutY()+50);
-                    break;
-                    case M:                        
-                    panAndZoomPane.addScale(-1,rect1.getLayoutX()+50,rect1.getLayoutY()+50);
-                    break;
-                             
-                    default:
-                        break;
-                }
-                rect1.setLayoutX(rect1.getLayoutX() + dx);
-                rect1.setLayoutY(rect1.getLayoutY() + dy);
-            }                        
-
-        });
     }
 }
