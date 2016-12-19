@@ -1,4 +1,4 @@
-package javafxdragpanzoom.view.controls;
+package Controls;
 
 /**
  * Interface pour un widget (indépendamment de l'API graphique) que l'on peut

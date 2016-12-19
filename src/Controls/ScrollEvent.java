@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package javafxdragpanzoom.view.controls;
+package Controls;
 import javafx.scene.Scene;
 import javafx.event.EventHandler;
-import javafxdragpanzoom.view.views.AbstractHomotheticPane;
+import Zoom.AbstractHomotheticPane;
 
 
 /**

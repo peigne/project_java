@@ -1,4 +1,4 @@
-package javafxdragpanzoom.view.controls;
+package Controls;
 
 /**
  * Interface décrivant un objet dont la mise à l'échelle est toujours homothétique

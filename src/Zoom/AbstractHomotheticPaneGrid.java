@@ -1,4 +1,4 @@
-package javafxdragpanzoom.view.views;
+package Zoom;
 import javafx.beans.InvalidationListener;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;

@@ -1,4 +1,4 @@
-package javafxdragpanzoom.view.views;
+package Zoom;
 
 import java.awt.Point;
 import javafx.geometry.Point2D;

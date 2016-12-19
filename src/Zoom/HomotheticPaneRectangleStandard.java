@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package javafxdragpanzoom.view.views;
+package Zoom;
 
 import javafx.scene.transform.Affine;
 import javafx.scene.transform.Transform;

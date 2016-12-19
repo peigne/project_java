@@ -1,10 +1,10 @@
-package javafxdragpanzoom.view.views;
+package Zoom;
 
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.scene.layout.Pane;
-import javafxdragpanzoom.view.controls.IHomothetic;
-import javafxdragpanzoom.view.controls.ITranslatable;
+import Controls.IHomothetic;
+import Controls.ITranslatable;
 
 /**
  * Classe abstraite décrivant un Pane dont la mise à l'échelle est toujours homothétique

@@ -3,51 +3,47 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package javafxdragpanzoom.view.controls;
+package Controls;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
-import javafxdragpanzoom.view.views.AbstractHomotheticPane;
-//import javafxdragpanzoom.view.views.AbstractHomotheticPaneGrid;
-//DEPLACEMENT DU CARRE GRILLE
+import Zoom.AbstractHomotheticPane;
+import Zoom.AbstractHomotheticPaneRectangle;
+//DEPLACEMENT DU CARRE BLEU
 /**
  *
  * @author darwican
  */
-public class HomotheticPanePanManager
-{
+public class HomotheticPaneDragManager {
 private double y0;
 private double x0;
 
-
-    public HomotheticPanePanManager(AbstractHomotheticPane grid) 
-    {
+    public HomotheticPaneDragManager(AbstractHomotheticPane rectangle) {
     x0=0;
     y0=0;
     
-    grid.addEventHandler(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
+    rectangle.addEventFilter(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
         @Override
         public void handle(MouseEvent event)
         {
             x0=event.getX();
             y0=event.getY();
             event.consume();
-            
+
         }
     });
-        grid.addEventHandler(MouseEvent.MOUSE_DRAGGED, new EventHandler<MouseEvent>() {
+        rectangle.addEventFilter(MouseEvent.MOUSE_DRAGGED, new EventHandler<MouseEvent>()
+        {
         @Override
         public void handle(MouseEvent event)
-        {  
+        {
             double dx=event.getX()-x0;
             double dy=event.getY()-y0;
-            grid.translate(dx, dy);
+            rectangle.translate(dx, dy);
             event.consume();
 
         }
         
     });
-
- 
-
-}
-}
+    
+    
+}}

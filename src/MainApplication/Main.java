@@ -1,23 +1,19 @@
-package javafxdragpanzoom;
-
-import javafx.application.Application;
+package MainApplication;
 import static javafx.application.Application.launch;
+import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import javafxdragpanzoom.view.views.AbstractHomotheticPane;
-import javafxdragpanzoom.view.views.AbstractHomotheticPaneRectangle;
-import javafxdragpanzoom.view.views.HomotheticPaneGridStandard;
-import javafxdragpanzoom.view.views.HomotheticPaneRectangleStandard;
-import javafxdragpanzoom.view.controls.HomotheticPanePanManager;
-import javafxdragpanzoom.view.controls.HomotheticPaneDragManager;
-import javafxdragpanzoom.view.controls.KeyControl;
-import javafxdragpanzoom.view.controls.ScrollEvent;
-/**
- * TP POO IENAC minSITA : Manipulation directe, zoom centré souris différencié
- * @author saporito
- */
-public class DragPanZoomApplication extends Application {
+import Zoom.AbstractHomotheticPane;
+import Zoom.AbstractHomotheticPaneRectangle;
+import Zoom.HomotheticPaneGridStandard;
+import Zoom.HomotheticPaneRectangleStandard;
+import Controls.HomotheticPanePanManager;
+import Controls.HomotheticPaneDragManager;
+import Controls.KeyControl;
+import Controls.ScrollEvent;
+
+public class Main extends Application {
 
     public static void main(String[] args) {
         launch(args);
