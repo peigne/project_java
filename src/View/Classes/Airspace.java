@@ -14,8 +14,6 @@ import View.Interfaces.IZone;
 import View.Interfaces.ICartographyManager;
 
 public class Airspace {
-    
-    private static final int FL = 200;
 
     private HashMap<String,ISector> espaceS;
     private HashMap<String,IBeacon> espaceB;
@@ -28,9 +26,14 @@ public class Airspace {
     public Airspace(ICartographyManager cartographyManager) {
         List<IBeacon> l_Beacon=cartographyManager.loadBeacons();
         List<ISector> l_Sectors=cartographyManager.loadSectors();
-        espaceB=new HashMap<String,IBeacon>();
-        espaceS=new HashMap<String,ISector>();
+        for (ISector sector : l_Sectors) {
+            this.espaceS.put(sector.getName(), sector);
+        }
+        for (IBeacon beacon: l_Beacon) {
+            this.espaceB.put(beacon.getCode(), beacon);
+        }       
     }
+    
     public boolean containSectors(String s) {
         return espaceS.containsKey(s);
     }
@@ -48,7 +51,7 @@ public class Airspace {
     }
 
     
-    public static List<IBeacon> getPublishedBeacons(List<IBeacon> beacons) {
+    public List<IBeacon> getPublishedBeacons(List<IBeacon> beacons) {
         List<IBeacon> publishedB=new ArrayList<IBeacon>();
         for (IBeacon beacon : beacons) {
             if (beacon.getType().equals("published")) {
