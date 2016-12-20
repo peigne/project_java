@@ -46,7 +46,7 @@ public class CartographyManagerXanthane implements ICartographyManager {
             Unmarshaller jaxbUnmarshaller = jaxbContextSecteurs.createUnmarshaller();
             SectorListXanthane sectorListXanthane = (SectorListXanthane)jaxbUnmarshaller.unmarshal(new File("sectors.xml"));
             List result = sectorListXanthane.getSectors();
-            result = AirspaceFilters.getSectorsFilteredByFL(result);
+            result = AirspaceFilters.getSectorsFilteredByFL(result,200);
             CoordinatesTransforms.sectorsLatLonToCautra(result);
             return result;
         }
