@@ -12,6 +12,8 @@ import View.Interfaces.ISector;
 import View.Interfaces.IBeacon;
 import View.Interfaces.IZone;
 import View.Interfaces.ICartographyManager;
+import data.param.VisualParameters;
+import data.param.VisualParametersManager;
 
 public class Airspace {
 
@@ -24,7 +26,8 @@ public class Airspace {
     }
     
     public Airspace(ICartographyManager cartographyManager) {
-        List<IBeacon> l_Beacon=cartographyManager.loadBeacons();
+        VisualParameters param = VisualParametersManager.load();
+        List<IBeacon> l_Beacon=cartographyManager.loadBeacons(param.getFileBeacons());
         List<ISector> l_Sectors=cartographyManager.loadSectors();
         for (ISector sector : l_Sectors) {
             this.espaceS.put(sector.getName(), sector);

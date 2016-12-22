@@ -24,11 +24,11 @@ import javax.xml.bind.Unmarshaller;
 public class CartographyManagerXanthane implements ICartographyManager {
     
     @Override
-    public List<IBeacon> loadBeacons() {
+    public List<IBeacon> loadBeacons(String nom_fic) {
         try {
             JAXBContext jaxbContextBalise = JAXBContext.newInstance(BeaconListXanthane.class);
             Unmarshaller jaxbUnmarshaller = jaxbContextBalise.createUnmarshaller();
-            BeaconListXanthane balisesXanthane = (BeaconListXanthane)jaxbUnmarshaller.unmarshal(new File("points.xml"));
+            BeaconListXanthane balisesXanthane = (BeaconListXanthane)jaxbUnmarshaller.unmarshal(new File(nom_fic));
             List result = balisesXanthane.getBeacons();
             result = AirspaceFilters.getPublishedBeacons(result);
             CoordinatesTransforms.beaconsLatLonToCautra(result);

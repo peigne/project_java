@@ -8,7 +8,7 @@ public interface ICartographyManager {
 	 * Charger les balises
 	 * @return liste des balises publiées, avec les coordonnées au format cautra
 	 */
-	public List<IBeacon> loadBeacons();
+	public List<IBeacon> loadBeacons(String nom_fic);
 	
 	/**
 	 * Charger les secteurs
