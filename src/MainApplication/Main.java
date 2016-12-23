@@ -12,11 +12,22 @@ import Controls.HomotheticPanePanManager;
 import Controls.HomotheticPaneDragManager;
 import Controls.KeyControl;
 import Controls.ScrollEvent;
+import View.Interfaces.IBeacon;
+import View.Interfaces.ICartographyManager;
+import View.Xanthane.CartographyManagerXanthane;
+import data.param.VisualParameters;
+import data.param.VisualParametersManager;
+import java.util.List;
 
 public class Main extends Application {
-
+    public static VisualParameters param = VisualParametersManager.load();
     public static void main(String[] args) {
         launch(args);
+        ICartographyManager cartographyManager = new CartographyManagerXanthane();
+        List<IBeacon> lb=cartographyManager.loadBeacons(param.getFileBeacons());
+    //Airspace airspace=new Airspace(cartographyManager);
+    //IBaseMap baseMap=cartographyManager.loadBaseMap(this.param.getFileBaseMap());
+    //System.out.println(lb);
     }
 
     @Override
