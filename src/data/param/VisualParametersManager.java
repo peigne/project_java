@@ -12,7 +12,7 @@ public class VisualParametersManager {
             
             JAXBContext jaxbContextSecteurs = JAXBContext.newInstance(VisualParameters.class);
             Unmarshaller jaxbUnmarshaller = jaxbContextSecteurs.createUnmarshaller();
-            VisualParameters visu= (VisualParameters)jaxbUnmarshaller.unmarshal(new File("/home/darwich/NetBeansProjects/java_projet/src/data/param/param.xml"));
+            VisualParameters visu= (VisualParameters)jaxbUnmarshaller.unmarshal(new File("../java_projet/src/data/param/param.xml"));
             return (visu);
             }
         catch (JAXBException ex) {
@@ -24,7 +24,7 @@ public class VisualParametersManager {
         JAXBContext jaxbContextSecteurs = JAXBContext.newInstance(VisualParameters.class);
         Marshaller jaxbMarshaller = jaxbContextSecteurs.createMarshaller();
         jaxbMarshaller.setProperty("jaxb.formatted.output", true);
-        jaxbMarshaller.marshal((Object)param, new File("/home/darwich/NetBeansProjects/java_projet/src/data/param/param.xml"));
+        jaxbMarshaller.marshal((Object)param, new File("../java_projet/src/data/param/param.xml"));
     }
 }
 

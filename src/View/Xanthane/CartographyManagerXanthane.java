@@ -30,8 +30,8 @@ public class CartographyManagerXanthane implements ICartographyManager {
             Unmarshaller jaxbUnmarshaller = jaxbContextBalise.createUnmarshaller();
             BeaconListXanthane balisesXanthane = (BeaconListXanthane)jaxbUnmarshaller.unmarshal(new File(nom_fic));
             List result = balisesXanthane.getBeacons();
-            result = AirspaceFilters.getPublishedBeacons(result);
-            CoordinatesTransforms.beaconsLatLonToCautra(result);
+            //result = AirspaceFilters.getPublishedBeacons(result);
+            //CoordinatesTransforms.beaconsLatLonToCautra(result);
             return result;
         }
         catch (JAXBException je) {
