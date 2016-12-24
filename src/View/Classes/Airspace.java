@@ -12,8 +12,8 @@ import View.Interfaces.ISector;
 import View.Interfaces.IBeacon;
 import View.Interfaces.IZone;
 import View.Interfaces.ICartographyManager;
-import data.param.VisualParameters;
-import data.param.VisualParametersManager;
+import visualparameters.VisualParameters;
+import visualparameters.VisualParametersManager;
 
 public class Airspace {
 

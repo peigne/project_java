@@ -1,5 +1,5 @@
 
-package data.param;
+package visualparameters;
 
 import data.xmladapters.ColorAdapter;
 import javafx.scene.paint.Color;

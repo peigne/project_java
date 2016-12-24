@@ -28,12 +28,12 @@ public class BeaconListXanthane {
         return new ArrayList<IBeacon>(this.beacons);
     }
 
-    public String toString() {
+    /*public String toString() {
         String res = "BeaconListXanthane(";
         for (BeaconXanthane beacon : this.beacons) {
             res = res + beacon + " ";
         }
         res = res + ")";
-        return res;
-    }
+        return res;}*/
+    
 }

@@ -15,19 +15,31 @@ import Controls.ScrollEvent;
 import View.Interfaces.IBeacon;
 import View.Interfaces.ICartographyManager;
 import View.Xanthane.CartographyManagerXanthane;
-import data.param.VisualParameters;
-import data.param.VisualParametersManager;
+import visualparameters.VisualParameters;
+import visualparameters.VisualParametersManager;
+import View.Interfaces.ISector;
+import View.Interfaces.IBaseMap;
 import java.util.List;
+
 
 public class Main extends Application {
     public static VisualParameters param = VisualParametersManager.load();
+
     public static void main(String[] args) {
+        System.out.println(param.getBeaconSize());
+        ICartographyManager cartographyManager = new CartographyManagerXanthane();
+        List<IBeacon> lb=cartographyManager.loadBeacons(param.getFileBeacons());
+        
+        //IBaseMap map= cartographyManager.loadBaseMap();
+        //System.out.println(map.getZones());
+        //List<ISector> li= cartographyManager.loadSectors();
+        //System.err.println(li.get(0).getFloor());
+        //System.out.println(lb.get(0).getCode());
+        //Airspace airspace=new Airspace(cartographyManager);
+        //IBaseMap baseMap=cartographyManager.loadBaseMap(this.param.getFileBaseMap());
+        //System.out.println(lb);
         launch(args);
-        //ICartographyManager cartographyManager = new CartographyManagerXanthane();
-        //List<IBeacon> lb=cartographyManager.loadBeacons(param.getFileBeacons());
-    //Airspace airspace=new Airspace(cartographyManager);
-    //IBaseMap baseMap=cartographyManager.loadBaseMap(this.param.getFileBaseMap());
-    //System.out.println(lb);
+
     }
 
     @Override

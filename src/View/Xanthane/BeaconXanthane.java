@@ -16,11 +16,14 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 public class BeaconXanthane extends Point implements IBeacon {
     @XmlAttribute(name="code")
     private String code;
+    
     @XmlAttribute(name="type")
     private String type;
+    
     @XmlAttribute(name="lat")
     @XmlJavaTypeAdapter(value=DoublePropertyAdapter.class)
     private DoubleProperty x;
+    
     @XmlAttribute(name="lon")
     @XmlJavaTypeAdapter(value=DoublePropertyAdapter.class)
     private DoubleProperty y;

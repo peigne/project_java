@@ -1,4 +1,4 @@
-package data.param;
+package visualparameters;
 
 import java.io.File;
 import javax.xml.bind.JAXBContext;
@@ -12,7 +12,7 @@ public class VisualParametersManager {
             
             JAXBContext jaxbContextSecteurs = JAXBContext.newInstance(VisualParameters.class);
             Unmarshaller jaxbUnmarshaller = jaxbContextSecteurs.createUnmarshaller();
-            VisualParameters visu= (VisualParameters)jaxbUnmarshaller.unmarshal(new File("../java_projet/src/data/param/param.xml"));
+            VisualParameters visu= (VisualParameters)jaxbUnmarshaller.unmarshal(new File("../java_projet/src/xml/param.xml"));
             return (visu);
             }
         catch (JAXBException ex) {
