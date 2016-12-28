@@ -24,9 +24,7 @@ public class CartographyManagerXanthane implements ICartographyManager {
     @Override
     public List<IBeacon> loadBeacons(String nom_fic) {
         try {
-            System.out.println("voici adresse"+nom_fic);
             JAXBContext jaxbContextBalise = JAXBContext.newInstance(BeaconListXanthane.class);
-            System.out.println("shit");
             Unmarshaller jaxbUnmarshaller = jaxbContextBalise.createUnmarshaller();
             File fic= new File(nom_fic);
             BeaconListXanthane balisesXanthane = (BeaconListXanthane)jaxbUnmarshaller.unmarshal(fic);
@@ -42,11 +40,12 @@ public class CartographyManagerXanthane implements ICartographyManager {
     
 
     @Override
-    public List<ISector> loadSectors() {
+    public List<ISector> loadSectors(String nom_fic) {
         try {
+            File fic= new File(nom_fic);
             JAXBContext jaxbContextSecteurs = JAXBContext.newInstance(SectorListXanthane.class);
             Unmarshaller jaxbUnmarshaller = jaxbContextSecteurs.createUnmarshaller();
-            SectorListXanthane sectorListXanthane = (SectorListXanthane)jaxbUnmarshaller.unmarshal(new File("../java_projet/src/xml/sectors.xml"));
+            SectorListXanthane sectorListXanthane = (SectorListXanthane)jaxbUnmarshaller.unmarshal(fic);
             List result = sectorListXanthane.getSectors();
             result = AirspaceFilters.getSectorsFilteredByFL(result,200);
             CoordinatesTransforms.sectorsLatLonToCautra(result);
@@ -58,11 +57,11 @@ public class CartographyManagerXanthane implements ICartographyManager {
     }
 
     @Override
-    public IBaseMap loadBaseMap() {
+    public IBaseMap loadBaseMap(String nom_fic) {
         try {
             JAXBContext jaxbContextFondCarte = JAXBContext.newInstance(BaseMapXanthane.class);
             Unmarshaller jaxbUnmarshaller = jaxbContextFondCarte.createUnmarshaller();
-            BaseMapXanthane map = (BaseMapXanthane)jaxbUnmarshaller.unmarshal(new File("../java_projet/src/xml/france.xml"));
+            BaseMapXanthane map = (BaseMapXanthane)jaxbUnmarshaller.unmarshal(new File(nom_fic));
             CoordinatesTransforms.latLonToCautra(map);
             return map;
         }

@@ -28,7 +28,7 @@ public class Airspace {
     public Airspace(ICartographyManager cartographyManager) {
         VisualParameters param = VisualParametersManager.load();
         List<IBeacon> l_Beacon=cartographyManager.loadBeacons(param.getFileBeacons());
-        List<ISector> l_Sectors=cartographyManager.loadSectors();
+        List<ISector> l_Sectors=cartographyManager.loadSectors(param.getFileSectors());
         for (ISector sector : l_Sectors) {
             this.espaceS.put(sector.getName(), sector);
         }

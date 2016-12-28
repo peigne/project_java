@@ -39,8 +39,8 @@ public class Main extends Application {
         //IBaseMap baseMap=cartographyManager.loadBaseMap(this.param.getFileBaseMap());
         //System.out.println(lb);
         launch(args);
-        ICartographyManager cartographyManager = new CartographyManagerXanthane();
-        List<IBeacon> lb=cartographyManager.loadBeacons(param.getFileBeacons());
+        //ICartographyManager cartographyManager = new CartographyManagerXanthane();
+        //List<IBeacon> lb=cartographyManager.loadBeacons(param.getFileBeacons());
     //Airspace airspace=new Airspace(cartographyManager);
     //IBaseMap baseMap=cartographyManager.loadBaseMap(this.param.getFileBaseMap());
     System.out.println(lb);
