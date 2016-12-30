@@ -9,9 +9,10 @@ package View.Interfaces;
  *
  * @author Flo
  */
-import javafx.beans.property.DoubleProperty;
 
-public interface IBeacon {
+import View.Interfaces.IPoint;
+
+public interface IBeacon extends IPoint{
     public String getCode();
     public String getType();
 }

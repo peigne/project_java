@@ -19,18 +19,20 @@ import visualparameters.VisualParameters;
 import visualparameters.VisualParametersManager;
 import View.Interfaces.ISector;
 import View.Interfaces.IBaseMap;
+import View.View.View;
 import java.util.List;
+import javafx.scene.Parent;
 
 
 public class Main extends Application {
     public static VisualParameters param = VisualParametersManager.load();
 
     public static void main(String[] args) {
-        System.out.println(param.getBeaconSize());
+        /*System.out.println(param.getBeaconSize());
         ICartographyManager cartographyManager = new CartographyManagerXanthane();
-        List<IBeacon> lb=cartographyManager.loadBeacons(param.getFileBeacons());
+        //List<IBeacon> lb=cartographyManager.loadBeacons(param.getFileBeacons());
         
-        //IBaseMap map= cartographyManager.loadBaseMap();
+        IBaseMap map= cartographyManager.loadBaseMap(param.getFileBaseMap());
         //System.out.println(map.getZones());
         //List<ISector> li= cartographyManager.loadSectors();
         //System.err.println(li.get(0).getFloor());
@@ -43,15 +45,21 @@ public class Main extends Application {
         //List<IBeacon> lb=cartographyManager.loadBeacons(param.getFileBeacons());
     //Airspace airspace=new Airspace(cartographyManager);
     //IBaseMap baseMap=cartographyManager.loadBaseMap(this.param.getFileBaseMap());
-    System.out.println(lb);
-
+    //System.out.println(param.getFileBeacons());*/
+    Main.launch((String[])args);
     }
 
     @Override
     public void start(Stage stage) {
         
+        View view = new View();
+        Scene scene = new Scene((Parent)view);
+        stage.setTitle("VisuRadar");
+        stage.setScene(scene);
+        stage.setFullScreen(true);
+        stage.show();
         // Racine du graphe de scène
-        Group root = new Group();
+        /*Group root = new Group();
 
         // Conteneur grid
         AbstractHomotheticPane grid = new HomotheticPaneGridStandard();//faut voir si on met pan ou pangrid
@@ -78,7 +86,7 @@ public class Main extends Application {
         
         //les deplacements
         HomotheticPanePanManager panManager=new HomotheticPanePanManager(grid);
-        HomotheticPaneDragManager panDrag = new HomotheticPaneDragManager(rectangle);
+        HomotheticPaneDragManager panDrag = new HomotheticPaneDragManager(rectangle);*/
         
         // affichage final
         stage.show();
