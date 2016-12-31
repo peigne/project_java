@@ -53,8 +53,8 @@ public class Main extends Application {
     public void start(Stage stage) {
         
         View view = new View();
-        Scene scene = new Scene((Parent)view);
-        stage.setTitle("VisuRadar");
+        Scene scene = new Scene(view);
+        stage.setTitle("Image Radar");
         stage.setScene(scene);
         stage.setFullScreen(true);
         stage.show();

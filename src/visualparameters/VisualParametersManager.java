@@ -12,7 +12,7 @@ public class VisualParametersManager {
             
             JAXBContext jaxbContextSecteurs = JAXBContext.newInstance(VisualParameters.class);
             Unmarshaller jaxbUnmarshaller = jaxbContextSecteurs.createUnmarshaller();
-            VisualParameters visu= (VisualParameters)jaxbUnmarshaller.unmarshal(new File("N:\\project_java\\src\\xml\\param.xml"));
+            VisualParameters visu= (VisualParameters)jaxbUnmarshaller.unmarshal(new File("E:\\Florian\\Mes documents\\NetBeansProjects\\project_java\\src\\xml\\param.xml"));
             return (visu);
             }
         catch (JAXBException ex) {
