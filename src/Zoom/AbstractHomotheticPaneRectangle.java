@@ -31,9 +31,6 @@ public abstract class AbstractHomotheticPaneRectangle extends AbstractHomothetic
                 @Override
                 public void changed(ObservableValue<? extends Double> observable, Double high, Double second_high) {
                         setScale(pane.getScale(),rect.getLayoutX(),rect.getLayoutY());
-                        
-                        
-                        
                 }
             };
             

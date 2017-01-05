@@ -21,19 +21,21 @@ import javax.xml.bind.Unmarshaller;
 public class CartographyManagerXanthane implements ICartographyManager {
 
     
+    
     @Override
     public List<IBeacon> loadBeacons(String nom_fic) {
         try {
             JAXBContext jaxbContextBalise = JAXBContext.newInstance(BeaconListXanthane.class);
             Unmarshaller jaxbUnmarshaller = jaxbContextBalise.createUnmarshaller();
-            File fic= new File(nom_fic);
-            BeaconListXanthane balisesXanthane = (BeaconListXanthane)jaxbUnmarshaller.unmarshal(fic);
+            BeaconListXanthane balisesXanthane = (BeaconListXanthane)jaxbUnmarshaller.unmarshal(new File(nom_fic));
             List result = balisesXanthane.getBeacons();
             result = AirspaceFilters.getPublishedBeacons(result);
-            CoordinatesTransforms.beaconsLatLonToCautra(result);
+            CoordinatesTransforms.beaconsLatLonToCautra(result); 
+
             return result;
         }
         catch (JAXBException je) {
+            je.printStackTrace();
             throw new ExceptionInInitializerError("Impossible to load beacons");
         }
     }

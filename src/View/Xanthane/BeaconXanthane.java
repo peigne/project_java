@@ -28,6 +28,9 @@ public class BeaconXanthane extends Point implements IBeacon {
     @XmlJavaTypeAdapter(value=DoublePropertyAdapter.class)
     private DoubleProperty y;
 
+    public  BeaconXanthane() {
+    }
+    
     public BeaconXanthane(Point p) {
         super(p);
     }
@@ -43,41 +46,6 @@ public class BeaconXanthane extends Point implements IBeacon {
     }
 
     @Override
-    public DoubleProperty xProperty() {
-        return this.x;
-    }
-
-    @Override
-    public DoubleProperty yProperty() {
-        return this.y;
-    }
-
-    @Override
-    public Double getX() {
-        return this.x.get();
-    }
-
-    @Override
-    public Double getY() {
-        return this.y.get();
-    }
-
-    @Override
-    public void setX(double x) {
-        this.x.set(x);
-    }
-
-    @Override
-    public void setY(double y) {
-        this.y.set(y);
-    }
-
-    @Override
-    public void set(IPoint p) {
-        this.x.set(p.getX().doubleValue());
-        this.y.set(p.getY().doubleValue());
-    }
-
     public String toString() {
         return "BeaconXanthane(code:" + this.getCode() + ", type:" + this.type + ", x:" + this.getX() + ", y:" + this.getY() + ")";
     }

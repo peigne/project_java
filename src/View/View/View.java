@@ -31,6 +31,7 @@ public final class View extends Control{
         Pane pane = new Pane();
         this.getChildren().add(pane);
         Radar radar = new Radar();
+        //SectorView sector=new SectorView();
         pane.getChildren().add(radar);
         //MenusManager.createAndManageGeneralMenu(pane);
         //MenusManager.createAndManageGeneralContextMenu(this);

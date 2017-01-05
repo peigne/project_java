@@ -21,6 +21,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement(name="sectors")
 @XmlAccessorType(value=XmlAccessType.FIELD)
 public class SectorListXanthane {
+    
     @XmlElement(name="sector")
     private ArrayList<SectorXanthane> sectors;
 

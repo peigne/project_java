@@ -22,15 +22,16 @@ import View.Interfaces.IBaseMap;
 import View.View.View;
 import java.util.List;
 import javafx.scene.Parent;
-
+import View.Classes.Airspace;
 
 public class Main extends Application {
     public static VisualParameters param = VisualParametersManager.load();
 
     public static void main(String[] args) {
-        /*System.out.println(param.getBeaconSize());
         ICartographyManager cartographyManager = new CartographyManagerXanthane();
         //List<IBeacon> lb=cartographyManager.loadBeacons(param.getFileBeacons());
+        Airspace espace= new Airspace(cartographyManager);
+        /*System.out.println(param.getBeaconSize());
         
         IBaseMap map= cartographyManager.loadBaseMap(param.getFileBaseMap());
         //System.out.println(map.getZones());
@@ -52,20 +53,24 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) {
         
-        View view = new View();
-        Scene scene = new Scene(view);
-        stage.setTitle("Image Radar");
-        stage.setScene(scene);
-        stage.setFullScreen(true);
-        stage.show();
-        // Racine du graphe de scène
-        /*Group root = new Group();
+        
+        //parametres stages.
+        //stage.setFullScreen(true);
 
+        // Racine du graphe de scène
+        Group root = new Group();
+        
+
+        
         // Conteneur grid
         AbstractHomotheticPane grid = new HomotheticPaneGridStandard();//faut voir si on met pan ou pangrid
         grid.setLayoutX(0);
         grid.setLayoutY(0);
         root.getChildren().add(grid);
+        
+        //importation de la carte
+        View view = new View();
+        grid.getChildren().add(view);
         
         // Conteneur rectangle bleu
         AbstractHomotheticPaneRectangle rectangle = new HomotheticPaneRectangleStandard(grid);
@@ -86,8 +91,8 @@ public class Main extends Application {
         
         //les deplacements
         HomotheticPanePanManager panManager=new HomotheticPanePanManager(grid);
-        HomotheticPaneDragManager panDrag = new HomotheticPaneDragManager(rectangle);*/
-        
+        HomotheticPaneDragManager panDrag = new HomotheticPaneDragManager(rectangle);
+        //Affichage des points
         // affichage final
         stage.show();
         

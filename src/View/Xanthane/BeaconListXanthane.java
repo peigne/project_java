@@ -21,6 +21,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement(name="points")
 @XmlAccessorType(value=XmlAccessType.FIELD)
 public class BeaconListXanthane {
+    
     @XmlElement(name="point")
     private ArrayList<BeaconXanthane> beacons;
 
@@ -28,12 +29,14 @@ public class BeaconListXanthane {
         return new ArrayList<IBeacon>(this.beacons);
     }
 
-    /*public String toString() {
+    
+    @Override
+    public String toString() {
         String res = "BeaconListXanthane(";
         for (BeaconXanthane beacon : this.beacons) {
             res = res + beacon + " ";
         }
         res = res + ")";
-        return res;}*/
+        return res;}
     
 }

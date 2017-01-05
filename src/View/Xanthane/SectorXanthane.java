@@ -24,14 +24,19 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement(name="sector")
 @XmlAccessorType(value=XmlAccessType.FIELD)
 public class SectorXanthane implements ISector {
+    
     @XmlAttribute(name="name")
     private String name;
+    
     @XmlElement(name="slice")
     private ArrayList<SliceXanthane> slices;
+    
     @XmlAttribute(name="floor")
     private String floor;
+    
     @XmlAttribute(name="ceiling")
     private String ceiling;
+    
     @XmlAttribute(name="acc")
     private String acc;
 

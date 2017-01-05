@@ -18,8 +18,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(name="map")
 @XmlAccessorType(value=XmlAccessType.FIELD)
-public class BaseMapXanthane
-implements IBaseMap {
+public class BaseMapXanthane implements IBaseMap {
     @XmlElement(name="outline")
     ArrayList<OutlineXanthane> outlines;
 

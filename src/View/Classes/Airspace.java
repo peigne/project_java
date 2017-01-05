@@ -17,23 +17,18 @@ import visualparameters.VisualParametersManager;
 
 public class Airspace {
 
-    private HashMap<String,ISector> espaceS;
-    private HashMap<String,IBeacon> espaceB;
-    
-    public Airspace() {
-        espaceS=new HashMap<String,ISector>();
-        espaceB=new HashMap<String,IBeacon>();
-    }
+    private HashMap<String,ISector> espaceS=new HashMap<String,ISector>();
+    private HashMap<String,IBeacon> espaceB=new HashMap<String,IBeacon>();
     
     public Airspace(ICartographyManager cartographyManager) {
         VisualParameters param = VisualParametersManager.load();
         List<IBeacon> l_Beacon=cartographyManager.loadBeacons(param.getFileBeacons());
         List<ISector> l_Sectors=cartographyManager.loadSectors(param.getFileSectors());
         for (ISector sector : l_Sectors) {
-            this.espaceS.put(sector.getName(), sector);
+            espaceS.put(sector.getName(), sector);
         }
         for (IBeacon beacon: l_Beacon) {
-            this.espaceB.put(beacon.getCode(), beacon);
+            espaceB.put(beacon.getCode(), beacon);
         }       
     }
     
