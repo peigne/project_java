@@ -4,6 +4,7 @@ package View.View;
 import View.Classes.Airspace;
 import View.Interfaces.IBeacon;
 import View.Interfaces.ISector;
+import View.Interfaces.IZone;
 
 import View.Xanthane.CartographyManagerXanthane;
 import View.Xanthane.VertexXanthane;
@@ -33,6 +34,16 @@ public class AirspaceView extends Group{
         airspace=new Airspace(cartographyManager);
         Map<String,ISector> list_sector=airspace.getSectorByNameMap();
         List<IBeacon> list_beacon=airspace.getPublishedBeacons();
-
+        for (Map.Entry<String,ISector> entry :list_sector.entrySet()){
+            for (IZone zone : entry.getValue().getSlices()){
+                Double[] points = zone.getVertexesXYArray();
+                Polygon polygon = new Polygon();
+                polygon.getPoints().addAll(points);
+                polygon.setStroke(param.getSectorStrokeColor());
+                polygon.setFill(param.getSectorFillColor());
+                this.getChildren().add(polygon);
+            }
+        }
+        
     }
 }

@@ -33,13 +33,15 @@ import javafx.scene.layout.Pane;
  * @author Florian
  */
 public class Radar extends Pane{
-    //private Airspace airspace;
+    private AirspaceView airspace;
     private BaseMapView basemap;
     public static visualparameters.VisualParameters param = visualparameters.VisualParametersManager.load();
     
     public Radar(){
         basemap = new BaseMapView();
+        airspace = new AirspaceView();
         this.getChildren().addAll(new Node[]{this.basemap});
+        this.getChildren().addAll(new Node[]{this.airspace});
     }
     
 }

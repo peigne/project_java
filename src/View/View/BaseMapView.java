@@ -21,8 +21,8 @@ public class BaseMapView extends Group{
             Double[] points = zone.getVertexesXYArray();
             Polygon polygon = new Polygon();
             polygon.getPoints().addAll(points);
-            polygon.setStroke((Paint)param.getBaseMapStrokeColor());
-            polygon.setFill((Paint)param.getBaseMapFillColor());
+            polygon.setStroke(param.getBaseMapStrokeColor());
+            polygon.setFill(param.getBaseMapFillColor());
             this.getChildren().add(polygon);
         }
     }
