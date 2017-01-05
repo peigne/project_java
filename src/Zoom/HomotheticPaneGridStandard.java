@@ -1,7 +1,4 @@
 package Zoom;
-
-import java.awt.Point;
-import javafx.geometry.Point2D;
 import javafx.scene.transform.Affine;
 
 /**
@@ -57,7 +54,7 @@ public class HomotheticPaneGridStandard extends AbstractHomotheticPaneGrid {
         
     @Override
     public void translate(double dx, double dy) {
-        transfo.appendTranslation(this.getLayoutX()+dx, this.getLayoutY()+dy);
+        transfo.appendTranslation(dx,dy);
 
     }
 

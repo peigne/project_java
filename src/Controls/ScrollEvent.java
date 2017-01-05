@@ -25,7 +25,7 @@ public class ScrollEvent {
                 grid.addScale(event.getDeltaY(),
                 grid.parentToLocal(event.getX(),event.getY()).getX(),
                 grid.parentToLocal(event.getX(),event.getY()).getY());
-
+                
             }
         });}
 }

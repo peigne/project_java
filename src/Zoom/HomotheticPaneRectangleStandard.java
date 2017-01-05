@@ -15,14 +15,9 @@ import javafx.scene.transform.Transform;
  */
 public class HomotheticPaneRectangleStandard extends AbstractHomotheticPaneRectangle {
     private Affine transformation_1;
+    
     public HomotheticPaneRectangleStandard (AbstractHomotheticPane pane) {
         super(pane);
-        // La seule chose à faire ici est de lier le mécanisme de mise à l'échelle
-        // lié au choix d'implémentation (les méthodes standard setScaleX...)
-        // au mécanisme de gestion de la mise à l'échelle homothétique 
-        // et au modèle issus d'AbstractHomotheticPane.
-        // Toutes les transformations se feront ensuite directement sur le modèle 
-        // via les méthodes setScale(...) réalisées dans cette classe.
         transformation_1= new Affine();
         this.getTransforms().add(transformation_1);
         
@@ -35,8 +30,9 @@ public class HomotheticPaneRectangleStandard extends AbstractHomotheticPaneRecta
         }
 
     @Override
-    public void setScale(double scale, double pivotX, double pivotY) {
-        transformation_1.setToTransform(1/scale,0,pivotX,0, 1/scale,pivotY);
+    public void setScale(double scale,double pivotX,double pivotY) {
+
+        transformation_1.setToTransform(1/scale,0,transformation_1.getTx(),0, 1/scale,transformation_1.getTy());
        
         
    }
@@ -48,9 +44,7 @@ public class HomotheticPaneRectangleStandard extends AbstractHomotheticPaneRecta
 
     @Override
     public void translate(double dx, double dy) {
-        this.setLayoutX(this.getLayoutX()+dx);
-        this.setLayoutY(this.getLayoutY()+dy);
-        //transformation_1.appendTranslation(this.getLayoutX()+dx, this.getLayoutY()+dy);
+        transformation_1.appendTranslation(dx,dy);
    }
     
 }

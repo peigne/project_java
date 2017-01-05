@@ -55,9 +55,5 @@ public abstract class AbstractHomotheticPaneGrid extends AbstractHomotheticPane 
         scaleProperty().addListener(the_listener);
         }
         super.getChildren().add(grid);
- 
-            
-// ...
     }
-    
 }
