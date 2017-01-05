@@ -12,6 +12,7 @@ import View.Interfaces.ISector;
 import View.Interfaces.IBeacon;
 import View.Interfaces.IZone;
 import View.Interfaces.ICartographyManager;
+import java.util.Map.Entry;
 import visualparameters.VisualParameters;
 import visualparameters.VisualParametersManager;
 
@@ -49,11 +50,11 @@ public class Airspace {
     }
 
     
-    public List<IBeacon> getPublishedBeacons(List<IBeacon> beacons) {
+    public List<IBeacon> getPublishedBeacons() {
         List<IBeacon> publishedB=new ArrayList<IBeacon>();
-        for (IBeacon beacon : beacons) {
-            if (beacon.getType().equals("published")) {
-                publishedB.add(beacon);
+        for (Entry<String,IBeacon> entry :espaceB.entrySet()){
+            if (entry.getKey().equals("published")){
+                publishedB.add(entry.getValue());
             }
         }
         return publishedB;
