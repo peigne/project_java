@@ -3,7 +3,7 @@ package View.Classes;
 /**
  *
  * @author picaudfl
- *anas fait un test/
+ */
 public class Comet {
 
     private Point[] tab;
