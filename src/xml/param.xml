@@ -17,9 +17,9 @@
     <cometSizeReduction>2</cometSizeReduction>
     <cometStrokeColor>0xe1cf0cff</cometStrokeColor>
     <cometStrokeWidth>1</cometStrokeWidth>
-    <fileBaseMap>../java_projet/src/xml/france.xml</fileBaseMap>
-    <fileBeacons>../java_projet/src/xml/points.xml</fileBeacons>
-    <fileSectors>../java_projet/src/xml/sectors.xml</fileSectors>
+    <fileBaseMap>C:\\Users\\flori\\OneDrive\\Documents\\NetBeansProjects\\project_java\\src\\xml\\france.xml</fileBaseMap>
+    <fileBeacons>C:\\Users\\flori\\OneDrive\\Documents\\NetBeansProjects\\project_java\\src\\xml\\points.xml</fileBeacons>
+    <fileSectors>C:\\Users\\flori\\OneDrive\\Documents\\NetBeansProjects\\project_java\\src\\xml\\sectors.xml</fileSectors>
     <flightLevel>350</flightLevel>
     <ivyBus>127.255.255.255:2010</ivyBus>
     <labelArrowStrokeColor>0xffffffff</labelArrowStrokeColor>

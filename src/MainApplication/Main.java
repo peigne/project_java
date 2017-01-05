@@ -28,9 +28,9 @@ public class Main extends Application {
     public static VisualParameters param = VisualParametersManager.load();
 
     public static void main(String[] args) {
-        ICartographyManager cartographyManager = new CartographyManagerXanthane();
+
         //List<IBeacon> lb=cartographyManager.loadBeacons(param.getFileBeacons());
-        Airspace espace= new Airspace(cartographyManager);
+
         /*System.out.println(param.getBeaconSize());
         
         IBaseMap map= cartographyManager.loadBaseMap(param.getFileBaseMap());
@@ -84,14 +84,14 @@ public class Main extends Application {
         stage.setTitle("Image Radar");
        
         //les reactions au touches du clavier
-        KeyControl key=new KeyControl(scene,grid,rectangle);
+        //KeyControl key=new KeyControl(scene,grid,rectangle);
         
         //les reactions du scroll
         ScrollEvent zoom= new ScrollEvent(scene, grid);
         
         //les deplacements
         HomotheticPanePanManager panManager=new HomotheticPanePanManager(grid);
-        HomotheticPaneDragManager panDrag = new HomotheticPaneDragManager(rectangle);
+        //HomotheticPaneDragManager panDrag = new HomotheticPaneDragManager(rectangle);
         //Affichage des points
         // affichage final
         stage.show();

@@ -9,13 +9,14 @@ import javax.xml.bind.Unmarshaller;
 public class VisualParametersManager {
     public static VisualParameters load() {
         try {
-            
+            File file =new File("C:\\Users\\flori\\OneDrive\\Documents\\NetBeansProjects\\project_java\\src\\xml\\param.xml");
             JAXBContext jaxbContextSecteurs = JAXBContext.newInstance(VisualParameters.class);
             Unmarshaller jaxbUnmarshaller = jaxbContextSecteurs.createUnmarshaller();
-            VisualParameters visu= (VisualParameters) jaxbUnmarshaller.unmarshal(new File("../java_projet/src/xml/param.xml"));
+            VisualParameters visu= (VisualParameters) jaxbUnmarshaller.unmarshal(file);
             return (visu);
             }
         catch (JAXBException ex) {
+            ex.printStackTrace();
             throw new ExceptionInInitializerError("Impossible to load parameters!!!!");
         }
     }
