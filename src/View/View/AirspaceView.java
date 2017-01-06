@@ -8,10 +8,13 @@ import View.Interfaces.IZone;
 
 import View.Xanthane.CartographyManagerXanthane;
 import View.Xanthane.VertexXanthane;
+import Zoom.AbstractHomotheticPane;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.paint.Color;
@@ -29,7 +32,7 @@ public class AirspaceView extends Group{
     public static visualparameters.VisualParameters param = visualparameters.VisualParametersManager.load();
     private Airspace airspace;
     
-    public AirspaceView(){
+    public AirspaceView(AbstractHomotheticPane grid){
         CartographyManagerXanthane cartographyManager = new CartographyManagerXanthane();
         airspace=new Airspace(cartographyManager);
         Map<String,ISector> list_sector=airspace.getSectorByNameMap();
@@ -42,8 +45,16 @@ public class AirspaceView extends Group{
                 polygon.setStroke(param.getSectorStrokeColor());
                 polygon.setFill(param.getSectorFillColor());
                 this.getChildren().add(polygon);
+                ChangeListener the_listener = new ChangeListener<Double>(){
+                @Override
+                public void changed(ObservableValue<? extends Double> observable, Double first_width, Double second_width) {
+                        polygon.setStrokeWidth(1/grid.getScale());
+                }
+
+            };
+        grid.scaleProperty().addListener(the_listener); 
             }
         }
-        
+
     }
 }

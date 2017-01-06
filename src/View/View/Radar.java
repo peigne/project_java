@@ -18,6 +18,7 @@ import View.Interfaces.IBaseMap;
 import View.Interfaces.IBeacon;
 import View.Interfaces.ISector;
 import View.View.BaseMapView;
+import Zoom.AbstractHomotheticPane;
 import java.util.Map;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -37,9 +38,9 @@ public class Radar extends Pane{
     private BaseMapView basemap;
     public static visualparameters.VisualParameters param = visualparameters.VisualParametersManager.load();
     
-    public Radar(){
-        basemap = new BaseMapView();
-        airspace = new AirspaceView();
+    public Radar(AbstractHomotheticPane grid){
+        basemap = new BaseMapView(grid);
+        airspace = new AirspaceView(grid);
         this.getChildren().addAll(new Node[]{this.basemap});
         this.getChildren().addAll(new Node[]{this.airspace});
     }

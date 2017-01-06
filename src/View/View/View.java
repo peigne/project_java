@@ -19,16 +19,16 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import View.View.Radar;
+import Zoom.AbstractHomotheticPane;
 
 public final class View extends Control{
     public static visualparameters.VisualParameters param = visualparameters.VisualParametersManager.load();
 
-    public View() {
+    public View(AbstractHomotheticPane grid) {
         this.setBackground(new Background(new BackgroundFill[]{new BackgroundFill(param.getSceneBackgroundColor(), new CornerRadii(0), new Insets(0))}));
         Pane pane = new Pane();
         this.getChildren().add(pane);
-        Radar radar = new Radar();
-        //SectorView sector=new SectorView();
+        Radar radar = new Radar(grid);
         pane.getChildren().add(radar);
 
     }
