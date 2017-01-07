@@ -2,6 +2,7 @@ package utilsgeo;
 
 import View.Interfaces.IPoint;
 import View.Classes.Point;
+import View.Interfaces.IBeacon;
 
 public class ConversionCautra {
     private static final double PI_4 = 0.7853981633974483;
@@ -28,6 +29,19 @@ public class ConversionCautra {
         return lc;
     }
 
+    public static void latLonToCautra(IBeacon beacon) {
+        double lat=beacon.getX();
+        double lon = beacon.getY();
+        double lat_r = ConversionCautra.degToRad(lat);
+        double lon_r = ConversionCautra.degToRad(lon);
+        double lc = ConversionCautra.lat_conforme(lat_r);
+        double kp = 2.0 / (1.0 + Math.sin(L0) * Math.sin(lc) + Math.cos(L0) * Math.cos(lc) * Math.cos(lon_r));
+        double x_res = kp * R0 * Math.cos(lc) * Math.sin(lon_r);
+        double y_res = kp * R0 * (Math.cos(L0) * Math.sin(lc) - Math.sin(L0) * Math.cos(lc) * Math.cos(lon_r));
+        Point p=new Point(x_res, y_res);
+        beacon.set(p);
+    }
+    
     public static IPoint latLonToCautra(double lat, double lon) {
         double lat_r = ConversionCautra.degToRad(lat);
         double lon_r = ConversionCautra.degToRad(lon);

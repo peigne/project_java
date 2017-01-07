@@ -25,10 +25,10 @@ public abstract class AbstractHomotheticPaneGrid extends AbstractHomotheticPane 
     
     public AbstractHomotheticPaneGrid() {
         // Créer la grille
-        setStyle(STYLE);
-        super.setWidth(WIDTH);
-        super.setHeight(HEIGHT);
-        for (int i=50; i< HEIGHT-1;i+=50)
+        //setStyle(STYLE);
+        //super.setWidth(WIDTH);
+        //super.setHeight(HEIGHT);
+        /*for (int i=50; i< HEIGHT-1;i+=50)
         {
             Line line_H= new Line();
             line_H.setStartX(i);
@@ -53,7 +53,7 @@ public abstract class AbstractHomotheticPaneGrid extends AbstractHomotheticPane 
 
             };
         scaleProperty().addListener(the_listener);
-        }
+        }*/
         super.getChildren().add(grid);
     }
 }

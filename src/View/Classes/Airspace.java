@@ -13,6 +13,7 @@ import View.Interfaces.IBeacon;
 import View.Interfaces.IZone;
 import View.Interfaces.ICartographyManager;
 import java.util.Map.Entry;
+import utilsgeo.ConversionCautra;
 import visualparameters.VisualParameters;
 import visualparameters.VisualParametersManager;
 
@@ -29,6 +30,7 @@ public class Airspace {
             espaceS.put(sector.getName(), sector);
         }
         for (IBeacon beacon: l_Beacon) {
+            ConversionCautra.latLonToCautra(beacon);
             espaceB.put(beacon.getCode(), beacon);
         }       
     }
@@ -53,7 +55,7 @@ public class Airspace {
     public List<IBeacon> getPublishedBeacons() {
         List<IBeacon> publishedB=new ArrayList<IBeacon>();
         for (Entry<String,IBeacon> entry :espaceB.entrySet()){
-            if (entry.getKey().equals("published")){
+            if (entry.getValue().getType().equals("published")){
                 publishedB.add(entry.getValue());
             }
         }
