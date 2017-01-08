@@ -31,7 +31,6 @@ public class CartographyManagerXanthane implements ICartographyManager {
             List result = balisesXanthane.getBeacons();
             result = AirspaceFilters.getPublishedBeacons(result);
             CoordinatesTransforms.beaconsLatLonToCautra(result); 
-
             return result;
         }
         catch (JAXBException je) {

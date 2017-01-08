@@ -23,6 +23,7 @@ import javafx.scene.paint.Paint;
 import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Shape;
 import java.lang.Math;
+import javafx.beans.property.DoubleProperty;
 import javafx.geometry.VPos;
 
 import javafx.scene.text.Text;
@@ -60,7 +61,6 @@ public class AirspaceView extends Group{
         grid.scaleProperty().addListener(the_listener); 
             }
         }
-        System.out.println(list_beacon);
         for (IBeacon beacon : list_beacon){
             Double[] position = {beacon.getX(),beacon.getY()};
             float dx=param.getBeaconSize();

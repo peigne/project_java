@@ -30,7 +30,6 @@ public class Airspace {
             espaceS.put(sector.getName(), sector);
         }
         for (IBeacon beacon: l_Beacon) {
-            ConversionCautra.latLonToCautra(beacon);
             espaceB.put(beacon.getCode(), beacon);
         }       
     }
