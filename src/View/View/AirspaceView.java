@@ -25,6 +25,7 @@ import javafx.scene.shape.Shape;
 import java.lang.Math;
 import javafx.beans.property.DoubleProperty;
 import javafx.geometry.VPos;
+import javafx.scene.layout.GridPane;
 
 import javafx.scene.text.Text;
 /**
@@ -64,7 +65,8 @@ public class AirspaceView extends Group{
         for (IBeacon beacon : list_beacon){
             Double[] position = {beacon.getX(),beacon.getY()};
             float dx=param.getBeaconSize();
-            Double[] points = {position[0],position[1]+2/3*dx,position[0]-dx/Math.sqrt(3),position[1]-1/3*dx,position[0]+dx/Math.sqrt(3),position[1]-1/3*dx};
+            Double[] points = {position[0],position[1]-1.5*dx,position[0]-dx/2,position[1]-dx/2,position[0]+dx/2,position[1]-dx/2};
+            //Double[] points = {position[0],position[1]+2/3*dx,position[0]-dx/Math.sqrt(3),position[1]-1/3*dx,position[0]+dx/Math.sqrt(3),position[1]-1/3*dx};
             Polygon polygon = new Polygon();
             polygon.getPoints().addAll(points);
             polygon.setStroke(param.getBeaconStrokeColor());
@@ -72,10 +74,32 @@ public class AirspaceView extends Group{
             this.getChildren().add(polygon);
             Text text = new Text(beacon.getCode());
             text.setFill((Paint)param.getBeaconTextFillColor());
-            text.setTextOrigin(VPos.TOP);
-            text.setLayoutX(param.getBeaconTextOffsetX() - text.getBoundsInLocal().getWidth() / 2.0);
-            text.setLayoutY(param.getBeaconTextOffsetY() + dx);
+            //text.setTextOrigin(VPos.TOP);
+            text.setScaleX(0.6);
+            text.setScaleY(0.6);
+            text.setLayoutX(position[0]);
+            text.setLayoutY(position[1]);
             this.getChildren().add(text);
+            ChangeListener beacon_listener = new ChangeListener<Double>(){
+                @Override
+                public void changed(ObservableValue<? extends Double> observable, Double first_width, Double second_width) {
+                        if (grid.getScale()>2.5)
+                        {text.setScaleX((2/grid.getScale()));
+                        text.setScaleY((2/grid.getScale()));
+                        System.out.println(grid.getScale());}
+                        if (grid.getScale()>1)
+                        {
+                            polygon.setScaleX(2/grid.getScale());
+                            polygon.setScaleY(2/grid.getScale());
+                        }
+                        double d=(1/(grid.getScale()*grid.getScale()));
+                        text.setLayoutX(position[0]-d);
+                        text.setLayoutY(position[1]+d);
+                }
+
+            };
+                    grid.scaleProperty().addListener(beacon_listener); 
+
         }
     }
 }
