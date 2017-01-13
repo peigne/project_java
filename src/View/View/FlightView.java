@@ -5,7 +5,6 @@
  */
 package View.View;
 
-import View.Classes.FlightList;
 
 /**
  *

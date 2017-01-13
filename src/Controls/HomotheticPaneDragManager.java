@@ -7,7 +7,7 @@ package Controls;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 import Zoom.AbstractHomotheticPane;
-import Zoom.AbstractHomotheticPaneRectangle;
+import View.View.Etiquette;
 //DEPLACEMENT DU CARRE BLEU
 /**
  *

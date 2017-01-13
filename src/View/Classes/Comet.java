@@ -6,7 +6,7 @@ package View.Classes;
  */
 public class Comet {
 
-    private Point[] tab;
+    private Point[] tab=new Point[5];
 
     public Comet(Point p1) {
         this.tab[0] = new Point(p1);

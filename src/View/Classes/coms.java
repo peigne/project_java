@@ -5,6 +5,7 @@
  */
 package View.Classes;
 
+import Controls.HomotheticPaneDragManager;
 import fr.dgac.ivy.Ivy;
 import fr.dgac.ivy.IvyClient;
 import fr.dgac.ivy.IvyException;
@@ -13,8 +14,10 @@ import java.util.logging.Logger;
 import javafx.application.Platform;
 import javafx.scene.control.TextArea;
 import View.Classes.Flight;
-import View.Classes.FlightList;
 import View.View.FlightView;
+import View.View.Etiquette;
+import Zoom.AbstractHomotheticPane;
+import Zoom.HomotheticPaneRectangleStandard;
 import java.util.ArrayList;
 
 /**
@@ -26,7 +29,7 @@ public class coms {
     int i=0;
     int sortie=0;
     
-    public coms(TextArea textArea,ArrayList<Flight> list_flight) throws IvyException {
+    public coms(TextArea textArea,ArrayList<Flight> list_flight, AbstractHomotheticPane grid) throws IvyException {
         // initialize (set up the bus, name and ready message)
         
         bus = new Ivy("IvyTest", "IvyTest Ready", null);
@@ -58,6 +61,7 @@ public class coms {
                             +" Heading "+ strings[11]+" GroundSpeed "+ strings[12]+" Tendency "+ strings[13]+" Time "+ strings[14]+"\n");
                             for (Flight flight : list_flight){
                                 if (flight.getFlight()==num_vol){
+                                    
                                     flight.update(sector,x,-y,Vx,Vy,fl,heading,groundspeed);
                                     sortie=1;
                                 }
@@ -65,6 +69,24 @@ public class coms {
                             if (sortie==0){
                             Flight flight=new Flight(num_vol,nom,fl,x,y,Vx,Vy,heading,sector,groundspeed);
                             list_flight.add(flight);
+                            
+                            // creation etiquette 
+                            Etiquette rectangle = new HomotheticPaneRectangleStandard(grid,flight);
+                            
+                            //positionnement et abonnement de l etiquette
+                            rectangle.setLayoutX(flight.getPosition().getX());
+                            rectangle.setLayoutY(flight.getPosition().getY());
+                            rectangle.layoutXProperty().bind(flight.getPosition().xProperty());
+                            rectangle.layoutYProperty().bind(flight.getPosition().yProperty());
+                            
+                            //ajout de l etiquette a la view
+                            grid.getChildren().add(rectangle);
+                            
+                            //deplacement de l etiquette
+                            HomotheticPaneDragManager panDrag = new HomotheticPaneDragManager(rectangle);
+
+                                
+
                             }
                         }
                     });  

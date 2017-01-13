@@ -5,7 +5,7 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import Zoom.AbstractHomotheticPane;
-import Zoom.AbstractHomotheticPaneRectangle;
+import View.View.Etiquette;
 import Zoom.HomotheticPaneGridStandard;
 import Zoom.HomotheticPaneRectangleStandard;
 import Controls.HomotheticPanePanManager;
@@ -24,15 +24,15 @@ import java.util.List;
 import javafx.scene.Parent;
 import View.Classes.Airspace;
 import View.Classes.Flight;
-import View.Classes.FlightList;
 import View.Classes.Ivy_communication;
 import java.util.ArrayList;
+import static javafx.application.Application.launch;
 public class Main extends Application {
     
     public static VisualParameters param = VisualParametersManager.load();
-    public FlightList  l_flight=new FlightList();
-    public ArrayList<Flight> list_flight=l_flight.getFlightList();
-    public Ivy_communication simulation= new Ivy_communication(list_flight);
+    public ArrayList<Flight> list_flight=new ArrayList<Flight>();
+    public AbstractHomotheticPane grid = new HomotheticPaneGridStandard();
+    public Ivy_communication simulation= new Ivy_communication(list_flight,grid);
 
     public static void main(String[] args) 
     {
@@ -43,24 +43,18 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) 
-    {        
-        //parametres stages.
+    {
         stage.setFullScreen(true);
 
-        // Racine du graphe de scène
-        //roup root = new Group();
-        
-        //root.setStyle("-fx-background-color: black;");
-        
         // Conteneur grid
-        AbstractHomotheticPane grid = new HomotheticPaneGridStandard();
   
         
         //importation de la carte
         View view = new View(grid);
+        Flight flight=new Flight(1, "anas",200, 0, 0, 20, 20, 180, "anazs", 82);
         
         // Conteneur rectangle bleu
-        AbstractHomotheticPaneRectangle rectangle = new HomotheticPaneRectangleStandard(grid);
+        Etiquette rectangle = new HomotheticPaneRectangleStandard(grid, flight);
         rectangle.setLayoutX(450);
         rectangle.setLayoutY(450);
         grid.getChildren().add(rectangle);

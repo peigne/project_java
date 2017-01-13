@@ -5,6 +5,8 @@
  */
 package Zoom;
 
+import View.View.Etiquette;
+import View.Classes.Flight;
 import javafx.scene.transform.Affine;
 import javafx.scene.transform.Transform;
 
@@ -13,11 +15,11 @@ import javafx.scene.transform.Transform;
  *
  * @author darwich
  */
-public class HomotheticPaneRectangleStandard extends AbstractHomotheticPaneRectangle {
+public class HomotheticPaneRectangleStandard extends Etiquette {
     private Affine transformation_1;
     
-    public HomotheticPaneRectangleStandard (AbstractHomotheticPane pane) {
-        super(pane);
+    public HomotheticPaneRectangleStandard (AbstractHomotheticPane pane, Flight flight) {
+        super(pane,flight);
         transformation_1= new Affine();
         this.getTransforms().add(transformation_1);
         

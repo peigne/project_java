@@ -12,6 +12,7 @@ import View.Classes.Flight;
 import View.Classes.Point;
 
 import View.Classes.coms;
+import Zoom.AbstractHomotheticPane;
 import fr.dgac.ivy.IvyException;
 import java.util.ArrayList;
 import javafx.application.Application;
@@ -28,7 +29,7 @@ public class Ivy_communication {
     public static TextArea textArea;
     
     
-    public Ivy_communication (ArrayList<Flight> list_flight){
+    public Ivy_communication (ArrayList<Flight> list_flight, AbstractHomotheticPane grid){
         
         // Créer et paraméter une zone de texte pour afficher les messages de Rejeu
         textArea = new TextArea("Messages de Rejeu :\n");
@@ -56,7 +57,7 @@ public class Ivy_communication {
         
         // Lancement de la communication avec Rejeu
         try {
-            communicationManager = new coms(textArea,list_flight);
+            communicationManager = new coms(textArea,list_flight,grid);
             //javafx.application.Platform.runLater((Runnable) communicationManager);
         } catch (IvyException e) {
             throw new RuntimeException("Echec de connexion Ivy");

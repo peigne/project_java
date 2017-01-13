@@ -8,13 +8,13 @@ import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyEvent;
 import Zoom.AbstractHomotheticPane;
-import Zoom.AbstractHomotheticPaneRectangle;
+import View.View.Etiquette;
 /**
  *
  * @author darwich
  */
 public class KeyControl {
-    public KeyControl(Scene scene,AbstractHomotheticPane paneGridStandard,AbstractHomotheticPaneRectangle rectangle)
+    public KeyControl(Scene scene,AbstractHomotheticPane paneGridStandard,Etiquette rectangle)
     {
     scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
