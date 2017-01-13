@@ -37,8 +37,8 @@ public class Radar extends Pane{
     private AirspaceView airspace;
     private BaseMapView basemap;
     public static visualparameters.VisualParameters param = visualparameters.VisualParametersManager.load();
-    
     public Radar(AbstractHomotheticPane grid){
+       
         basemap = new BaseMapView(grid);
         airspace = new AirspaceView(grid);
         this.getChildren().addAll(new Node[]{this.basemap});

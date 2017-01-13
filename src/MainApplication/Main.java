@@ -23,35 +23,40 @@ import View.View.View;
 import java.util.List;
 import javafx.scene.Parent;
 import View.Classes.Airspace;
-
+import View.Classes.Ivy_communication;
 public class Main extends Application {
     public static VisualParameters param = VisualParametersManager.load();
 
     public static void main(String[] args) 
     {
+        
         Main.launch((String[])args);
+    
     }
 
     @Override
     public void start(Stage stage) 
     {
+        
+
+
+        //lancement des communications
+        Ivy_communication simulation= new Ivy_communication();
+        
         //parametres stages.
         stage.setFullScreen(true);
 
         // Racine du graphe de scène
-        Group root = new Group();
-
+        //roup root = new Group();
+        
+        //root.setStyle("-fx-background-color: black;");
+        
         // Conteneur grid
         AbstractHomotheticPane grid = new HomotheticPaneGridStandard();
-        grid.setLayoutX(400);
-        grid.setLayoutY(50);
-        root.getChildren().add(grid);
+  
         
         //importation de la carte
         View view = new View(grid);
-        grid.getChildren().add(view);
-        view.setLayoutX(200);
-        view.setLayoutY(300);
         
         // Conteneur rectangle bleu
         AbstractHomotheticPaneRectangle rectangle = new HomotheticPaneRectangleStandard(grid);
@@ -60,7 +65,7 @@ public class Main extends Application {
         grid.getChildren().add(rectangle);
         
         // Creation de la scène
-        Scene scene = new Scene(root, 500, 500);
+        Scene scene = new Scene(view);
         stage.setScene(scene);
         stage.setTitle("Image Radar");
        

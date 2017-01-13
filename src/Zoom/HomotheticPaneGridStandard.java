@@ -7,7 +7,7 @@ import javafx.scene.transform.Affine;
  *
  * @author saporito
  */
-public class HomotheticPaneGridStandard extends AbstractHomotheticPaneGrid {
+public class HomotheticPaneGridStandard extends AbstractHomotheticPane {
 
    private  Affine transfo;
 

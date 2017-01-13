@@ -9,7 +9,7 @@ import javax.xml.bind.Unmarshaller;
 public class VisualParametersManager {
     public static VisualParameters load() {
         try {
-            File file =new File("C:\\Users\\flori\\OneDrive\\Documents\\NetBeansProjects\\project_java\\src\\xml\\param.xml");
+            File file =new File("src/xml/param.xml");
             JAXBContext jaxbContextSecteurs = JAXBContext.newInstance(VisualParameters.class);
             Unmarshaller jaxbUnmarshaller = jaxbContextSecteurs.createUnmarshaller();
             VisualParameters visu= (VisualParameters) jaxbUnmarshaller.unmarshal(file);

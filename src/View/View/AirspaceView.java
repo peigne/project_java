@@ -9,6 +9,7 @@ import View.Interfaces.IZone;
 import View.Xanthane.CartographyManagerXanthane;
 import View.Xanthane.VertexXanthane;
 import Zoom.AbstractHomotheticPane;
+import Zoom.HomotheticPaneGridStandard;
 import java.awt.Font;
 import java.io.File;
 import java.util.ArrayList;
@@ -62,11 +63,12 @@ public class AirspaceView extends Group{
         grid.scaleProperty().addListener(the_listener); 
             }
         }
+        float dx=param.getBeaconSize();
+        double d=(dx/(grid.getScale()*grid.getScale()));
         for (IBeacon beacon : list_beacon){
             Double[] position = {beacon.getX(),beacon.getY()};
-            float dx=param.getBeaconSize();
-            Double[] points = {position[0],position[1]-1.5*dx,position[0]-dx/2,position[1]-dx/2,position[0]+dx/2,position[1]-dx/2};
-            //Double[] points = {position[0],position[1]+2/3*dx,position[0]-dx/Math.sqrt(3),position[1]-1/3*dx,position[0]+dx/Math.sqrt(3),position[1]-1/3*dx};
+            //Double[] points = {position[0],position[1]-1.5*dx,position[0]-dx/2,position[1]-dx/2,position[0]+dx/2,position[1]-dx/2};
+            Double[] points = {position[0],position[1]-1.5*d,position[0]-d/2,position[1]-d/2,position[0]+d/2,position[1]-d/2};
             Polygon polygon = new Polygon();
             polygon.getPoints().addAll(points);
             polygon.setStroke(param.getBeaconStrokeColor());
@@ -74,7 +76,6 @@ public class AirspaceView extends Group{
             this.getChildren().add(polygon);
             Text text = new Text(beacon.getCode());
             text.setFill((Paint)param.getBeaconTextFillColor());
-            //text.setTextOrigin(VPos.TOP);
             text.setScaleX(0.6);
             text.setScaleY(0.6);
             text.setLayoutX(position[0]);
@@ -83,16 +84,23 @@ public class AirspaceView extends Group{
             ChangeListener beacon_listener = new ChangeListener<Double>(){
                 @Override
                 public void changed(ObservableValue<? extends Double> observable, Double first_width, Double second_width) {
-                        if (grid.getScale()>2.5)
-                        {text.setScaleX((2/grid.getScale()));
-                        text.setScaleY((2/grid.getScale()));
-                        System.out.println(grid.getScale());}
-                        if (grid.getScale()>1)
+                        if (grid.getScale()>1.3)
                         {
-                            polygon.setScaleX(2/grid.getScale());
-                            polygon.setScaleY(2/grid.getScale());
+                        text.setScaleX(1/(grid.getScale()));
+                        text.setScaleY(1/(grid.getScale()));
+                        polygon.setScaleX(1/grid.getScale());
+                        polygon.setScaleY(1/grid.getScale());
                         }
-                        double d=(1/(grid.getScale()*grid.getScale()));
+                        
+                        if (grid.getScale()<1)
+                        {
+                            text.setScaleX(grid.getScale());
+                            text.setScaleY(grid.getScale());                            
+                            polygon.setScaleX(grid.getScale());
+                            polygon.setScaleY(grid.getScale());// a revoir
+                            
+                        }
+                        else
                         text.setLayoutX(position[0]-d);
                         text.setLayoutY(position[1]+d);
                 }
