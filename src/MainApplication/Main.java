@@ -23,9 +23,16 @@ import View.View.View;
 import java.util.List;
 import javafx.scene.Parent;
 import View.Classes.Airspace;
+import View.Classes.Flight;
+import View.Classes.FlightList;
 import View.Classes.Ivy_communication;
+import java.util.ArrayList;
 public class Main extends Application {
+    
     public static VisualParameters param = VisualParametersManager.load();
+    public FlightList  l_flight=new FlightList();
+    public ArrayList<Flight> list_flight=l_flight.getFlightList();
+    public Ivy_communication simulation= new Ivy_communication(list_flight);
 
     public static void main(String[] args) 
     {
@@ -36,13 +43,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) 
-    {
-        
-
-
-        //lancement des communications
-        Ivy_communication simulation= new Ivy_communication();
-        
+    {        
         //parametres stages.
         stage.setFullScreen(true);
 
@@ -82,5 +83,10 @@ public class Main extends Application {
         // affichage final
         stage.show();
     }      
+    
+    @Override
+    public void stop(){
+        simulation.stop();
+    }
     
 }

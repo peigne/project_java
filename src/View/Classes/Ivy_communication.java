@@ -13,6 +13,7 @@ import View.Classes.Point;
 
 import View.Classes.coms;
 import fr.dgac.ivy.IvyException;
+import java.util.ArrayList;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
@@ -27,7 +28,7 @@ public class Ivy_communication {
     public static TextArea textArea;
     
     
-    public Ivy_communication (){
+    public Ivy_communication (ArrayList<Flight> list_flight){
         
         // Créer et paraméter une zone de texte pour afficher les messages de Rejeu
         textArea = new TextArea("Messages de Rejeu :\n");
@@ -55,7 +56,7 @@ public class Ivy_communication {
         
         // Lancement de la communication avec Rejeu
         try {
-            communicationManager = new coms(textArea);
+            communicationManager = new coms(textArea,list_flight);
             //javafx.application.Platform.runLater((Runnable) communicationManager);
         } catch (IvyException e) {
             throw new RuntimeException("Echec de connexion Ivy");
